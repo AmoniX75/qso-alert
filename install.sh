@@ -1,7 +1,6 @@
 #!/bin/bash
 
-DIR=$(dirname $(readlink -f $0))
-NAME=$(basename $DIR)
+NAME="qso-alert"
 
 
 # Installation de git.
@@ -12,12 +11,11 @@ then
 fi
 
 
-git clone https://github.com/AmoniX75/qso-alert.git
-
 
 if ! test -d /opt/$NAME
 then
-    mv $DIR /opt
+    git clone https://github.com/AmoniX75/$NAME.git
+    mv $NAME /opt
     cd /opt/$NAME
 else
     exit 0
@@ -30,3 +28,5 @@ then
 else
     exit 0
 fi
+
+echo "Installation terminée !"
